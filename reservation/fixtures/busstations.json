@@ -88,7 +88,7 @@
         "pk": 14,
         "fields": {
             "name": "Asyut"
-        }>
+        }
     },
     {
         "model": "reservation.busstation",
