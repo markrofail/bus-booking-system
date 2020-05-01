@@ -68,6 +68,15 @@ To run the server on `localhost:8000`
     python manage.py runserver
 ```
 
+### Loading Demo Data
+  - BusStations Demo Data
+```bash
+  docker-compose run backend python manage.py loaddata busstations
+```
+  - Bus Demo Data
+```bash
+  docker-compose run backend python manage.py loaddata buses
+```
 ## Roadmap
 This section talks about how I arrived to the end product delivered
 
