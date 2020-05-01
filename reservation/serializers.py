@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import BusStation, Trip
+from .models import BusStation, Trip, Reservation
 
 
 class BusStationSerializer(serializers.ModelSerializer):
@@ -13,6 +13,11 @@ class TripSerializer(serializers.ModelSerializer):
         model = Trip
         fields = ['id', 'name', 'departure_time']
 
+
+class ReservationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reservation
+        fields = ['id', 'trip']
 
 class TripGetParamSerializer(serializers.Serializer):
     """
@@ -38,3 +43,13 @@ class TripGetParamSerializer(serializers.Serializer):
         if data['date_from'] > data['date_to']:
             raise serializers.ValidationError("'date_to' must be later than 'date_from'")
         return data
+
+class ReservationPostBodySerializer(serializers.Serializer):
+    """
+    Serializer for QueryParams validation on POST /reservation
+    """
+    trip_error_message = "invalid param format 'trip_id'; use GET '/trips' to retreive list of available trips"
+    trip_id = serializers.PrimaryKeyRelatedField(
+        queryset=Trip.objects.all(),
+        error_messages={"does_not_exist": trip_error_message}
+    )
