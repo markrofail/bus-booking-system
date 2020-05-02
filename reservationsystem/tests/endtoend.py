@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.test import Client, TestCase
 
-from .models import BusStation, Trip
+from reservationsystem.models import BusStation, Trip
 
 
 class StationsEndPointTests(TestCase):
