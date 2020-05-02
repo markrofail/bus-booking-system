@@ -1,3 +1,4 @@
+python-dotenv==0.13.0
 Django==3.0.5
 psycopg2-binary==2.8.5
 djangorestframework==3.11.0
