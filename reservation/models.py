@@ -44,6 +44,9 @@ class Trip(models.Model):
     trip_route = models.ForeignKey(TripRoute, on_delete=models.PROTECT)
     departure_time = models.DateTimeField('departure time')
 
+    def hasAvailableSeats(self):
+        return self.reservation_set.count() < self.bus.capacity
+
     def __str__(self):
         return self.name
 

@@ -63,14 +63,8 @@ def create_reservation(request):
     request_body = request_body.validated_data
 
     # [Step2] check if trip has a free reservation
-    trip_id = request_body['trip_id']
-    trips = Trip.objects.annotate(
-        current_reservations=Count('reservation')
-    ).filter(
-        id=trip_id.id,
-        bus__capacity__gt=F('current_reservations'),
-    )
-    if not trips:
+    trip = request_body['trip_id']
+    if not trip.hasAvailableSeats():
         error = 'this trip has no available seats'
         return Response({'error_message': error}, status=status.HTTP_400_BAD_REQUEST)
 
