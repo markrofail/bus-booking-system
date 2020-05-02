@@ -15,10 +15,16 @@ class TripSerializer(serializers.ModelSerializer):
 
 
 class ReservationSerializer(serializers.ModelSerializer):
+    bus_seat_name = serializers.SerializerMethodField(read_only=True)
+
+    def get_bus_seat_name(self, obj):
+        # obj is model instance
+        return obj.bus_seat.name
+
     class Meta:
         model = Reservation
-        fields = ['id', 'trip']
-
+        fields = ['id', 'trip', 'bus_seat_name']
+  
 class TripGetParamSerializer(serializers.Serializer):
     """
     Serializer for QueryParams validation on GET /trips

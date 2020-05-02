@@ -1,13 +1,46 @@
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from django.db.models import F
+
+
+class BusSeat(models.Model):
+    bus = models.ForeignKey('reservation.Bus', on_delete=models.CASCADE, editable=False)
+    order = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(64)])
+
+    row = models.CharField(max_length=1, editable=False)
+    column = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)], editable=False)
+
+    @property
+    def name(self):
+        return f"{self.row}{self.column}"
+
+    def __str__(self):
+        return f"{self.bus.name} {self.name}"
+
+    def save(self, *args, **kwargs):
+        # execute only onCreate (when id is None)
+        if not self.id:
+            # automatically compute row and column of seat before saving
+            row_size = 2
+            self.row = chr(ord('A') + self.order//row_size)
+            self.column = (self.order % row_size) + 1
+
+        super(BusSeat, self).save(*args, **kwargs)
 
 
 class Bus(models.Model):
     name = models.CharField(max_length=200)
-    capacity = models.IntegerField('capacity')
+    capacity = models.IntegerField(default=12, editable=False)
 
     def __str__(self):
         return f"{self.name}: {self.capacity} seats"
+
+    def save(self, *args, **kwargs):
+        super(Bus, self).save(*args, **kwargs)
+
+        if self.seats_set.count() < 1:
+            for i in range(self.capacity):
+                BusSeat.objects.create(bus=self, order=i)
 
 
 class BusStation(models.Model):
@@ -15,20 +48,6 @@ class BusStation(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class BusSeat(models.Model):
-    bus = models.ForeignKey(Bus, on_delete=models.CASCADE)
-
-    row = models.CharField(max_length=1)
-    column = models.IntegerField(validators = [MinValueValidator(1), MaxValueValidator(4)])
-
-    @property
-    def name(self):
-        return f"{self.row}{self.column}"
-
-    def __str__(self):
-        return f"{self.bus} {self.name}"
 
 
 class TripRoute(models.Model):
@@ -55,8 +74,17 @@ class Trip(models.Model):
     trip_route = models.ForeignKey(TripRoute, on_delete=models.PROTECT)
     departure_time = models.DateTimeField('departure time')
 
-    def hasAvailableSeats(self):
-        return self.reservation_set.count() < self.bus.capacity
+    last_reserved_seat = models.IntegerField(default=0, editable=False)
+
+    def has_available_seats(self):
+        return self.last_reserved_seat < self.bus.capacity
+
+    def reserve_seat(self):
+        if self.has_available_seats():
+            self.last_reserved_seat = F('last_reserved_seat') + 1
+            self.save()
+            self.refresh_from_db()
+            return BusSeat.objects.get(bus=self.bus, order__exact=self.last_reserved_seat)
 
     def __str__(self):
         return self.name
@@ -64,7 +92,16 @@ class Trip(models.Model):
 
 class Reservation(models.Model):
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
-    customer = models.ForeignKey('users.customer', on_delete=models.CASCADE)
+    customer = models.ForeignKey('users.customer', on_delete=models.DO_NOTHING)
+    bus_seat = models.ForeignKey('reservation.busseat', on_delete=models.DO_NOTHING, editable=False)
 
     def __str__(self):
         return f"Reservation for: {self.trip}"
+
+    def save(self, *args, **kwargs):
+        # execute only onCreate (when id is None)
+        if not self.id:
+            busseat = self.trip.reserve_seat()
+            print(busseat)
+            self.bus_seat = busseat
+        super(Reservation, self).save(*args, **kwargs)
