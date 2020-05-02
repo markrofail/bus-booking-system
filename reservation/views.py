@@ -64,13 +64,13 @@ def create_reservation(request):
 
     # [Step2] check if trip has a free reservation
     trip = request_body['trip_id']
-    if not trip.hasAvailableSeats():
+    if not trip.has_available_seats():
         error = 'this trip has no available seats'
         return Response({'error_message': error}, status=status.HTTP_400_BAD_REQUEST)
 
     # [Step3] create reservation
     customer = request.user.customer
-    new_reservation = Reservation(trip=trip_id, customer=customer)
+    new_reservation = Reservation(trip=trip, customer=customer)
     new_reservation.save()
 
     # [Step4] return reservation data

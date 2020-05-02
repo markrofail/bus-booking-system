@@ -3,32 +3,28 @@
         "model": "reservation.bus",
         "pk": 1,
         "fields": {
-            "name": "Blue Bus",
-            "capacity": 11
+            "name": "Blue Bus"
         }
     },
     {
         "model": "reservation.bus",
         "pk": 2,
         "fields": {
-            "name": "Green Bus",
-            "capacity": 12
+            "name": "Green Bus"
         }
     },
     {
         "model": "reservation.bus",
         "pk": 3,
         "fields": {
-            "name": "Yellow Bus",
-            "capacity": 10
+            "name": "Yellow Bus"
         }
     },
     {
         "model": "reservation.bus",
         "pk": 4,
         "fields": {
-            "name": "Red Bus",
-            "capacity": 8
+            "name": "Red Bus"
         }
     }
 ]

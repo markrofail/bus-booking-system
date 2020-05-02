@@ -1,14 +1,11 @@
 from django.contrib import admin
 
-from .models import Bus, BusStation
-from .models import Trip, TripRoute, TripStop
-from .models import Reservation
+from .models import (Bus, BusSeat, BusStation, Reservation, Trip, TripRoute,
+                     TripStop)
 
-admin.site.register(Bus)
-admin.site.register(BusStation)
-admin.site.register(Trip)
-admin.site.register(Reservation)
 
+class ReservationAdmin(admin.ModelAdmin):
+    readonly_fields = ["bus_seat"]
 
 class TripStopInline(admin.TabularInline):
     model = TripStop
@@ -18,5 +15,17 @@ class TripStopInline(admin.TabularInline):
 class TripRouteAdmin(admin.ModelAdmin):
     inlines = [TripStopInline]
 
+class BusSeatInline(admin.TabularInline):
+    model = BusSeat
 
+
+class BusAdmin(admin.ModelAdmin):
+    inlines = [BusSeatInline]
+
+
+admin.site.register(Trip)
+admin.site.register(BusStation)
+admin.site.register(Bus, BusAdmin)
 admin.site.register(TripRoute, TripRouteAdmin)
+admin.site.register(Reservation, ReservationAdmin)
+
