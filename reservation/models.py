@@ -53,6 +53,7 @@ class Trip(models.Model):
 
 class Reservation(models.Model):
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+    customer = models.ForeignKey('users.customer', on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Reservation for: {self.trip}"
