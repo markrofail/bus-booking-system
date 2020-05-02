@@ -1,11 +1,13 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import F
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class BusSeat(models.Model):
     bus = models.ForeignKey('reservation.Bus', on_delete=models.CASCADE, editable=False)
-    order = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(64)])
+    order = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(63)])
 
     row = models.CharField(max_length=1, editable=False)
     column = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)], editable=False)
@@ -35,13 +37,11 @@ class Bus(models.Model):
     def __str__(self):
         return f"{self.name}: {self.capacity} seats"
 
-    def save(self, *args, **kwargs):
-        super(Bus, self).save(*args, **kwargs)
-
-        if self.seats_set.count() < 1:
-            for i in range(self.capacity):
-                BusSeat.objects.create(bus=self, order=i)
-
+@receiver(post_save, sender=Bus)
+def populate_bus_seats(sender, instance, **kwargs):
+    if not hasattr(instance, 'seats_set'):
+        for i in range(instance.capacity):
+            BusSeat.objects.create(bus=instance, order=i)
 
 class BusStation(models.Model):
     name = models.CharField(max_length=200)
@@ -81,10 +81,9 @@ class Trip(models.Model):
 
     def reserve_seat(self):
         if self.has_available_seats():
+            return BusSeat.objects.get(bus=self.bus, order__exact=self.last_reserved_seat)
             self.last_reserved_seat = F('last_reserved_seat') + 1
             self.save()
-            self.refresh_from_db()
-            return BusSeat.objects.get(bus=self.bus, order__exact=self.last_reserved_seat)
 
     def __str__(self):
         return self.name
@@ -102,6 +101,5 @@ class Reservation(models.Model):
         # execute only onCreate (when id is None)
         if not self.id:
             busseat = self.trip.reserve_seat()
-            print(busseat)
             self.bus_seat = busseat
         super(Reservation, self).save(*args, **kwargs)
