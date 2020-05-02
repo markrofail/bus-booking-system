@@ -3,11 +3,14 @@ from rest_framework import permissions, serializers, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
+from reservationsystem.serializers import (BusStationSerializer,
+                                           ReservationPostBodySerializer,
+                                           ReservationSerializer,
+                                           TripGetParamSerializer,
+                                           TripSerializer)
 from users.permissions import IsCustomer
+
 from .models import BusStation, Reservation, Trip
-from .serializers import (BusStationSerializer, ReservationPostBodySerializer,
-                          ReservationSerializer, TripGetParamSerializer,
-                          TripSerializer)
 
 
 @api_view(['GET'])
