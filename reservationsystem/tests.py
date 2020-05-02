@@ -11,7 +11,7 @@ class StationsEndPointTests(TestCase):
     def testAllStations(self):
         station_count = BusStation.objects.all().count()
 
-        response = self.client.get('/api/v1/stations')
+        response = self.client.get('/api/v1/reservationsystem/stations')
         self.assertEqual(response.status_code, 200)
 
         response_json = response.json()
@@ -29,7 +29,7 @@ class TripsEndPointTests(TestCase):
         query_params['start_station'] = BusStation.objects.get(name="Asyut").id
         query_params['end_station'] = BusStation.objects.get(name="Banha").id
 
-        response = self.client.get('/api/v1/trips', query_params)
+        response = self.client.get('/api/v1/reservationsystem/trips', query_params)
         self.assertEqual(response.status_code, 200)
 
         response_json = response.json()
@@ -48,7 +48,7 @@ class ReservationEndPointTests(TestCase):
 
         request_headers = {'HTTP_AUTHORIZATION': f'Bearer {token}'}
         request_body = {"trip": trip_id}
-        response = self.client.post('/api/v1/reservations', request_body, **request_headers)
+        response = self.client.post('/api/v1/reservationsystem/reservations', request_body, **request_headers)
         self.assertEqual(response.status_code, 200)
 
         response_json = response.json()
@@ -60,6 +60,6 @@ def login_as_bob():
     client = Client()
 
     request_body = dict(username='bob', password='loudreptile70')
-    response = client.post('/api/token/', request_body)
+    response = client.post('/api/v1/token/', request_body)
 
     return response.json()['access']
