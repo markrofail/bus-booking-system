@@ -20,7 +20,7 @@ class TripListApi(APIView):
         date_from = serializers.DateTimeField()
         date_to = serializers.DateTimeField()
 
-        busstop_error_message = "invalid param format 'station_end'; use GET '/stations' to retreive list of stations"
+        busstop_error_message = "invalid param format 'station_end'; use GET '/stations' to retrieve list of stations"
         error_messages = {
             "does_not_exist": busstop_error_message,
             "incorrect_type": busstop_error_message,

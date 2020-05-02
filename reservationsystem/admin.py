@@ -7,6 +7,7 @@ from .models import (Bus, BusSeat, BusStation, Reservation, Trip, TripRoute,
 class ReservationAdmin(admin.ModelAdmin):
     readonly_fields = ["bus_seat"]
 
+
 class TripStopInline(admin.TabularInline):
     model = TripStop
     extra = 1
@@ -14,6 +15,7 @@ class TripStopInline(admin.TabularInline):
 
 class TripRouteAdmin(admin.ModelAdmin):
     inlines = [TripStopInline]
+
 
 class BusSeatInline(admin.TabularInline):
     model = BusSeat
@@ -28,4 +30,3 @@ admin.site.register(BusStation)
 admin.site.register(Bus, BusAdmin)
 admin.site.register(TripRoute, TripRouteAdmin)
 admin.site.register(Reservation, ReservationAdmin)
-

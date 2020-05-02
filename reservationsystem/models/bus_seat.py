@@ -7,8 +7,7 @@ class BusSeat(models.Model):
     order = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(63)])
 
     row = models.CharField(max_length=1, editable=False)
-    column = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(4)], editable=False)
+    column = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)], editable=False)
 
     @property
     def name(self):
@@ -22,7 +21,7 @@ class BusSeat(models.Model):
         if not self.id:
             # automatically compute row and column of seat before saving
             row_size = 2
-            self.row = chr(ord('A') + self.order//row_size)
+            self.row = chr(ord('A') + self.order // row_size)
             self.column = (self.order % row_size) + 1
 
         super(BusSeat, self).save(*args, **kwargs)
