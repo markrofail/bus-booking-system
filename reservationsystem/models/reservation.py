@@ -7,4 +7,4 @@ class Reservation(models.Model):
     bus_seat = models.ForeignKey('reservationsystem.busseat', on_delete=models.DO_NOTHING, editable=False)
 
     def __str__(self):
-        return f"Reservation for: {self.trip}"
+        return f"Reservation for: {self.trip} by: {self.customer}"
