@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Bus(models.Model):
@@ -16,6 +17,20 @@ class BusStation(models.Model):
         return self.name
 
 
+class BusSeat(models.Model):
+    bus = models.ForeignKey(Bus, on_delete=models.CASCADE)
+
+    row = models.CharField(max_length=1)
+    column = models.IntegerField(validators = [MinValueValidator(1), MaxValueValidator(4)])
+
+    @property
+    def name(self):
+        return f"{self.row}{self.column}"
+
+    def __str__(self):
+        return f"{self.bus} {self.name}"
+
+
 class TripRoute(models.Model):
     name = models.CharField(max_length=200)
     duration = models.DurationField('duration')
@@ -31,11 +46,7 @@ class TripStop(models.Model):
     stop_number = models.IntegerField('stop number')
 
     def __str__(self):
-        return (
-            f"Stop Number:{self.stop_number} "
-            f"on: {self.trip_route} "
-            f"at: {self.stop_number}"
-        )
+        return f"{self.trip_route}.{self.stop_number}: {self.station}"
 
 
 class Trip(models.Model):
