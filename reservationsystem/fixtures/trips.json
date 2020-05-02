@@ -1,6 +1,6 @@
 [
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 1,
         "fields": {
             "name": "Trip Isosphere",
@@ -10,7 +10,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 2,
         "fields": {
             "name": "Trip Isonus",
@@ -20,7 +20,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 3,
         "fields": {
             "name": "Trip Dentrex",
@@ -30,7 +30,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 4,
         "fields": {
             "name": "Trip Enersol",
@@ -40,7 +40,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 5,
         "fields": {
             "name": "Trip Overplex",
@@ -50,7 +50,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 6,
         "fields": {
             "name": "Trip Intrawear",
@@ -60,7 +60,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 7,
         "fields": {
             "name": "Trip Xsports",
@@ -70,7 +70,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 8,
         "fields": {
             "name": "Trip Cytrex",
@@ -80,7 +80,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 9,
         "fields": {
             "name": "Trip Gology",
@@ -90,7 +90,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 10,
         "fields": {
             "name": "Trip Zenolux",
@@ -100,7 +100,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 11,
         "fields": {
             "name": "Trip Pigzart",
@@ -110,7 +110,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 12,
         "fields": {
             "name": "Trip Isologics",
@@ -120,7 +120,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 13,
         "fields": {
             "name": "Trip Knowlysis",
@@ -130,7 +130,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 14,
         "fields": {
             "name": "Trip Xanide",
@@ -140,7 +140,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 15,
         "fields": {
             "name": "Trip Inquala",
@@ -150,7 +150,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 16,
         "fields": {
             "name": "Trip Letpro",
@@ -160,7 +160,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 17,
         "fields": {
             "name": "Trip Datagene",
@@ -170,7 +170,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 18,
         "fields": {
             "name": "Trip Realmo",
@@ -180,7 +180,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 19,
         "fields": {
             "name": "Trip Polaria",
@@ -190,7 +190,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 20,
         "fields": {
             "name": "Trip Olympix",
@@ -200,7 +200,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 21,
         "fields": {
             "name": "Trip Opticall",
@@ -210,7 +210,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 22,
         "fields": {
             "name": "Trip Verton",
@@ -220,7 +220,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 23,
         "fields": {
             "name": "Trip Opticom",
@@ -230,7 +230,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 24,
         "fields": {
             "name": "Trip Comtrak",
@@ -240,7 +240,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 25,
         "fields": {
             "name": "Trip Extragen",
@@ -250,7 +250,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 26,
         "fields": {
             "name": "Trip Ginkle",
@@ -260,7 +260,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 27,
         "fields": {
             "name": "Trip Wrapture",
@@ -270,7 +270,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 28,
         "fields": {
             "name": "Trip Otherway",
@@ -280,7 +280,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 29,
         "fields": {
             "name": "Trip Photobin",
@@ -290,7 +290,7 @@
         }
     },
     {
-        "model": "reservation.trip",
+        "model": "reservationsystem.trip",
         "pk": 30,
         "fields": {
             "name": "Trip Zentry",

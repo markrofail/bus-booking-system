@@ -22,7 +22,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    re_path(r'^api/v1/', include('reservation.urls', namespace='v1')),
+    re_path(r'^api/v1/', include('reservationsystem.urls', namespace='v1')),
 
     # Admin Urls
     path('admin/', admin.site.urls),

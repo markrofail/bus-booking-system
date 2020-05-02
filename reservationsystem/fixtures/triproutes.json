@@ -1,6 +1,6 @@
 [
     {
-        "model": "reservation.triproute",
+        "model": "reservationsystem.triproute",
         "pk": 1,
         "fields": {
             "name": "Trip Route A",
@@ -8,7 +8,7 @@
         }
     },
     {
-        "model": "reservation.triproute",
+        "model": "reservationsystem.triproute",
         "pk": 2,
         "fields": {
             "name": "Trip Route B",
@@ -16,7 +16,7 @@
         }
     },
     {
-        "model": "reservation.triproute",
+        "model": "reservationsystem.triproute",
         "pk": 3,
         "fields": {
             "name": "Trip Route C",
@@ -24,7 +24,7 @@
         }
     },
     {
-        "model": "reservation.triproute",
+        "model": "reservationsystem.triproute",
         "pk": 4,
         "fields": {
             "name": "Trip Route D",
@@ -32,7 +32,7 @@
         }
     },
     {
-        "model": "reservation.triproute",
+        "model": "reservationsystem.triproute",
         "pk": 5,
         "fields": {
             "name": "Trip Route E",
@@ -40,7 +40,7 @@
         }
     },
     {
-        "model": "reservation.triproute",
+        "model": "reservationsystem.triproute",
         "pk": 6,
         "fields": {
             "name": "Trip Route F",
@@ -48,7 +48,7 @@
         }
     },
     {
-        "model": "reservation.triproute",
+        "model": "reservationsystem.triproute",
         "pk": 7,
         "fields": {
             "name": "Trip Route G",
@@ -56,7 +56,7 @@
         }
     },
     {
-        "model": "reservation.triproute",
+        "model": "reservationsystem.triproute",
         "pk": 8,
         "fields": {
             "name": "Trip Route H",
