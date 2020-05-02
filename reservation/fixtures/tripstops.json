@@ -607,7 +607,7 @@
         "pk": 68,
         "fields": {
             "trip_route": 8,
-            "station": 43,
+            "station": 1,
             "stop_number": 9
         }
     }

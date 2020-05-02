@@ -1,6 +1,13 @@
 [
     {
         "model": "reservation.busstation",
+        "pk": 1,
+        "fields": {
+            "name": "Barnis"
+        }
+    },
+    {
+        "model": "reservation.busstation",
         "pk": 2,
         "fields": {
             "name": "Cairo"
@@ -284,13 +291,6 @@
         "pk": 42,
         "fields": {
             "name": "Al Qasr"
-        }
-    },
-    {
-        "model": "reservation.busstation",
-        "pk": 43,
-        "fields": {
-            "name": "Barnis"
         }
     }
 ]
