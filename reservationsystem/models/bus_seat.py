@@ -9,6 +9,9 @@ class BusSeat(models.Model):
     row = models.CharField(max_length=1, editable=False)
     column = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)], editable=False)
 
+    class Meta:
+        unique_together = ('bus', 'order',)
+
     @property
     def name(self):
         return f"{self.row}{self.column}"
