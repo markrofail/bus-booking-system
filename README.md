@@ -69,14 +69,27 @@ To run the server on `localhost:8000`
 ```
 
 ### Loading Demo Data
-  - BusStations Demo Data
 ```bash
-  docker-compose run backend python manage.py loaddata busstations
+  docker-compose run backend python manage.py loaddata customers busstations buses triproutes tripstops trips customers
 ```
-  - Bus Demo Data
-```bash
-  docker-compose run backend python manage.py loaddata buses
-```
+
+The system is loaded with **30** Trips with **8** different routes, **42** different bus stations, **4** buses
+#### Users:
+  - Admin
+    * role: SuperUser
+    * username: `admin`
+    * pass: `heavybat38`
+  
+  - Alice
+    * role: Customer
+    * username: `alice`
+    * pass: `bentpump66`
+  
+  - Bob
+    * role: Customer
+    * username: `bob`
+    * pass: `loudreptile70`
+  
 ## Roadmap
 This section talks about how I arrived to the end product delivered
 
