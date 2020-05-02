@@ -15,7 +15,7 @@
   <h3 align="center">Bus Reservation System</h3>
 
   <p align="center">
-    The is an implementation of a bus reservation backend API
+    The is an implementation of a bus reservationsystem backend API
     <br />
     To be consumed by a web or mobile frontend
     <br />

@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 
 class BusSeat(models.Model):
-    bus = models.ForeignKey('reservation.Bus', on_delete=models.CASCADE, editable=False)
+    bus = models.ForeignKey('reservationsystem.Bus', on_delete=models.CASCADE, editable=False)
     order = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(63)])
 
     row = models.CharField(max_length=1, editable=False)
@@ -92,7 +92,7 @@ class Trip(models.Model):
 class Reservation(models.Model):
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
     customer = models.ForeignKey('users.customer', on_delete=models.DO_NOTHING)
-    bus_seat = models.ForeignKey('reservation.busseat', on_delete=models.DO_NOTHING, editable=False)
+    bus_seat = models.ForeignKey('reservationsystem.busseat', on_delete=models.DO_NOTHING, editable=False)
 
     def __str__(self):
         return f"Reservation for: {self.trip}"
