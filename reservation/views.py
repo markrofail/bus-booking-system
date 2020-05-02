@@ -1,12 +1,9 @@
-from datetime import datetime
-
-from django import forms
-from django.db.models import F, Q, Count
+from django.db.models import Count, F, Q
 from rest_framework import permissions, serializers, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
+from users.permissions import IsCustomer
 from .models import BusStation, Reservation, Trip
 from .serializers import (BusStationSerializer, ReservationPostBodySerializer,
                           ReservationSerializer, TripGetParamSerializer,
@@ -54,7 +51,7 @@ def trip_list(request):
 
 
 @api_view(['POST'])
-@permission_classes((permissions.AllowAny,))
+@permission_classes((IsCustomer,))
 def create_reservation(request):
     """
     Create a new Reservation
@@ -78,10 +75,10 @@ def create_reservation(request):
         return Response({'error_message': error}, status=status.HTTP_400_BAD_REQUEST)
 
     # [Step3] create reservation
-    new_reservation = Reservation(trip=trip_id)
+    customer = request.user.customer
+    new_reservation = Reservation(trip=trip_id, customer=customer)
     new_reservation.save()
 
     # [Step4] return reservation data
     serializer = ReservationSerializer(new_reservation)
     return Response(serializer.data)
-    return Response(None)
