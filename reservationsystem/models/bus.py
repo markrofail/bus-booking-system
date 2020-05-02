@@ -15,6 +15,8 @@ class Bus(models.Model):
 
 @receiver(post_save, sender='reservationsystem.bus')
 def populate_bus_seats(sender, instance, **kwargs):
-    if not hasattr(instance, 'seats_set'):
-        for i in range(instance.capacity):
-            BusSeat.objects.create(bus=instance, order=i)
+    if hasattr(instance, 'seats_set'):
+        return
+
+    for i in range(instance.capacity):
+        BusSeat.objects.create(bus=instance, order=i)
