@@ -16,7 +16,8 @@ def get_all_trips(*, date_from: datetime, date_to: datetime, start_station: BusS
     trips = Trip.objects.filter(
         departure_time__gte=date_from,
         departure_time__lte=date_to,
-        trip_route__tripstop__station=start_station
+        trip_route__tripstop__station=start_station,
+        bus__capacity__gt = F('last_reserved_seat')
     ).annotate(
         # save 1st trip stop number as `start_station_number`
         start_station_number=F('trip_route__tripstop__stop_number')
