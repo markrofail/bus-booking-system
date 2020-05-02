@@ -22,7 +22,7 @@
         "pk": 3,
         "fields": {
             "trip_route": 1,
-            "station": 1,
+            "station": 3,
             "stop_number": 3
         }
     },
@@ -337,7 +337,7 @@
         "pk": 38,
         "fields": {
             "trip_route": 5,
-            "station": 1,
+            "station": 3,
             "stop_number": 8
         }
     },
@@ -589,7 +589,7 @@
         "pk": 66,
         "fields": {
             "trip_route": 8,
-            "station": 1,
+            "station": 3,
             "stop_number": 7
         }
     },
