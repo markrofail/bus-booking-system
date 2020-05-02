@@ -1,35 +1,53 @@
-from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework import serializers, status
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from reservationsystem.models import Reservation
-from reservationsystem.serializers import ReservationSerializer, ReservationPostBodySerializer
-from users.permissions import IsCustomer
+from reservationsystem.models import Trip, Reservation
+from reservationsystem.services.reservations import create_reservation
+from users import permissions
 
 
-@api_view(['POST'])
-@permission_classes((IsCustomer,))
-def create_reservation(request):
+class ReservationCreateApi(APIView):
     """
     Create a new Reservation
     """
-    # [Step1] retrieve and validate body from request
-    request_body = ReservationPostBodySerializer(data=request.data)
-    if not request_body.is_valid():
-        return Response(request_body.errors, status=status.HTTP_400_BAD_REQUEST)
-    request_body = request_body.validated_data
 
-    # [Step2] check if trip has a free reservation
-    trip = request_body['trip_id']
-    if not trip.has_available_seats():
-        error = 'this trip has no available seats'
-        return Response({'error_message': error}, status=status.HTTP_400_BAD_REQUEST)
+    permission_classes = [permissions.IsCustomer]
 
-    # [Step3] create reservation
-    customer = request.user.customer
-    new_reservation = Reservation(trip=trip, customer=customer)
-    new_reservation.save()
+    class InputSerializer(serializers.Serializer):
+        trip_error_message = "invalid param format 'trip_id'; use GET '/trips' to retreive list of available trips"
 
-    # [Step4] return reservation data
-    serializer = ReservationSerializer(new_reservation)
-    return Response(serializer.data)
+        trip = serializers.PrimaryKeyRelatedField(
+            queryset=Trip.objects.all(),
+            error_messages={
+                "does_not_exist": trip_error_message,
+                "incorrect_type": trip_error_message,
+            })
+
+    class OutputSerializer(serializers.ModelSerializer):
+        bus_seat = serializers.SerializerMethodField(read_only=True)
+
+        def get_bus_seat(self, obj):
+            return obj.bus_seat.name
+
+        class Meta:
+            model = Reservation
+            fields = ['id', 'trip', 'bus_seat']
+
+    def post(self, request, format=None):
+        # [Step1] retrieve and validate body from request
+        serializer = self.InputSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        new_reservation = create_reservation(
+            **serializer.validated_data,
+            customer=self.request.user.customer,
+        )
+
+        if not new_reservation:
+            err_json = {'error_message': 'this trip has no available seats'}
+            return Response(err_json, status=status.HTTP_400_BAD_REQUEST)
+
+        # [Step4] return reservation data
+        serializer = self.OutputSerializer(new_reservation)
+        return Response(serializer.data)

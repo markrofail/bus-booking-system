@@ -127,6 +127,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## Acknowledgements
+* Django Styleguide by [HackSoftware](https://github.com/HackSoftware/Django-Styleguide)
 * Project Logo made by [Darius Dan](https://www.flaticon.com/authors/darius-dan)
 
 ## License

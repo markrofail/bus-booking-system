@@ -17,6 +17,7 @@ class StationsEndPointTests(TestCase):
         response_json = response.json()
         self.assertEqual(len(response_json), station_count)
 
+
 class TripsEndPointTests(TestCase):
     fixtures = ['busstations', 'buses', 'triproutes', 'tripstops', 'trips']
 
@@ -46,17 +47,18 @@ class ReservationEndPointTests(TestCase):
         trip_id = Trip.objects.get(name="Trip Zentry").id
 
         request_headers = {'HTTP_AUTHORIZATION': f'Bearer {token}'}
-        request_body = {"trip_id":trip_id}
+        request_body = {"trip": trip_id}
         response = self.client.post('/api/v1/reservations', request_body, **request_headers)
         self.assertEqual(response.status_code, 200)
 
         response_json = response.json()
-        bus_seat = response_json['bus_seat_name']
+        bus_seat = response_json['bus_seat']
         self.assertEqual(bus_seat, "A1")
+
 
 def login_as_bob():
     client = Client()
-    
+
     request_body = dict(username='bob', password='loudreptile70')
     response = client.post('/api/token/', request_body)
 

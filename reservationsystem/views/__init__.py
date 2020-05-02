@@ -1,3 +1,3 @@
-from .reservations import create_reservation
-from .stations import stations_list
-from .trips import trip_list
+from .reservations import ReservationCreateApi
+from .stations import StationListApi
+from .trips import TripListApi
