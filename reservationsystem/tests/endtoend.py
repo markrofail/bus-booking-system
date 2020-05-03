@@ -1,8 +1,9 @@
 from datetime import datetime
 
+import pytz
 from django.test import Client, TestCase
 
-from reservationsystem.models import BusStation, Trip
+from reservationsystem.models import BusStation, Trip, BusSeat
 
 
 class StationsEndPointTests(TestCase):
@@ -23,8 +24,8 @@ class TripsEndPointTests(TestCase):
 
     def testQueryTrips(self):
         query_params = dict()
-        query_params['date_from'] = datetime(2020, 1, 17, 0, 0, 0, 0)
-        query_params['date_to'] = datetime(2020, 1, 19, 0, 0, 0, 0)
+        query_params['date_from'] = pytz.utc.localize(datetime(2020, 1, 17, 0, 0, 0, 0))
+        query_params['date_to'] = pytz.utc.localize(datetime(2020, 1, 19, 0, 0, 0, 0))
 
         query_params['start_station'] = BusStation.objects.get(name="Asyut").id
         query_params['end_station'] = BusStation.objects.get(name="Banha").id

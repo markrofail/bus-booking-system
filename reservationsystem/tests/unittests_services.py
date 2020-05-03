@@ -1,5 +1,6 @@
 from datetime import datetime
 
+import pytz
 from django.test import TestCase
 
 from reservationsystem.models import BusStation, Trip, BusSeat
@@ -26,8 +27,8 @@ class TripSearchServicesTests(TestCase):
         """
         check if has_available_seats() returns True if no reservations
         """
-        date_from = datetime(2020, 1, 17, 0, 0, 0, 0)
-        date_to = datetime(2020, 1, 19, 0, 0, 0, 0)
+        date_from = pytz.utc.localize(datetime(2020, 1, 17, 0, 0, 0, 0))
+        date_to = pytz.utc.localize(datetime(2020, 1, 19, 0, 0, 0, 0))
 
         start_station = BusStation.objects.get(name="Asyut")
         end_station = BusStation.objects.get(name="Banha")
