@@ -6,5 +6,8 @@ class Reservation(models.Model):
     customer = models.ForeignKey('users.customer', on_delete=models.DO_NOTHING)
     bus_seat = models.ForeignKey('reservationsystem.busseat', on_delete=models.DO_NOTHING, editable=False)
 
+    departure_stop = models.ForeignKey('reservationsystem.tripstop', on_delete=models.DO_NOTHING, related_name='reservation_start')
+    arrival_stop = models.ForeignKey('reservationsystem.tripstop', on_delete=models.DO_NOTHING, related_name='reservation_end')
+
     def __str__(self):
-        return f"Reservation for: {self.trip} by: {self.customer}"
+        return f"{self.trip} by: {self.customer} [departure:{self.departure_station}] [arrival:{self.arrival_station}]"
