@@ -1,9 +1,11 @@
+from datetime import datetime
+
 from django.test import TestCase
 
 from reservationsystem.models import BusStation, Trip, BusSeat
 from reservationsystem.services.reservations import create_reservation
 from reservationsystem.services.stations import get_all_stations
-from reservationsystem.services.trips import get_seats_reserved
+from reservationsystem.services.trips import get_seats_reserved, has_available_seats, get_all_trips
 from users.models import Customer
 
 
@@ -17,90 +19,70 @@ class StationServicesTests(TestCase):
         self.assertEqual(len(result), station_count)
 
 
+class TripSearchServicesTests(TestCase):
+    fixtures = ['customers', 'busstations', 'buses', 'triproutes', 'tripstops', 'trips']
+
+    def test_get_all_trips(self):
+        """
+        check if has_available_seats() returns True if no reservations
+        """
+        date_from = datetime(2020, 1, 17, 0, 0, 0, 0)
+        date_to = datetime(2020, 1, 19, 0, 0, 0, 0)
+
+        start_station = BusStation.objects.get(name="Asyut")
+        end_station = BusStation.objects.get(name="Banha")
+
+        trip = get_all_trips(date_from=date_from, date_to=date_to, start_station=start_station, end_station=end_station)
+
+        # check using service method
+        self.assertEqual(len(trip), 1)
+        self.assertEqual(trip[0].name, "Trip Zentry")
+
+
 # noinspection PyUnresolvedReferences
 class TripServicesTests(TestCase):
     fixtures = ['customers', 'busstations', 'buses', 'triproutes', 'tripstops', 'trips']
 
-    #
-    # def test_reserve_seat_one(self):
-    #     """
-    #     check if reserve_seat({{trip}}) actually reserves a seat
-    #     """
-    #     trip_id = Trip.objects.get(pk=1)
-    #
-    #     # check initial `last_reserved_seat` value
-    #     self.assertEqual(trip_id.last_reserved_seat, 0)
-    #
-    #     reserve_seat(trip_id)
-    #     trip_id.refresh_from_db()
-    #
-    #     # check new `last_reserved_seat` value
-    #     self.assertEqual(trip_id.last_reserved_seat, 1)
-    #
-    # def test_reserve_seat_some(self, ):
-    #     """
-    #     check if reserve_seat({{trip}}) reserves n seats
-    #     """
-    #     num_reservations = 5
-    #     trip_id = Trip.objects.get(pk=1)
-    #
-    #     # check initial `last_reserved_seat` value
-    #     self.assertEqual(trip_id.last_reserved_seat, 0)
-    #
-    #     for i in range(num_reservations):
-    #         reserve_seat(trip_id)
-    #         trip_id.refresh_from_db()
-    #
-    #     # check new `last_reserved_seat` value
-    #     self.assertEqual(trip_id.last_reserved_seat, num_reservations)
-    #
-    # def test_reserve_seat_all(self, ):
-    #     """
-    #     check if reserve_seat({{trip}}) stops reserving at capacity
-    #     """
-    #     trip_id = Trip.objects.get(pk=1)
-    #     bus_capacity = trip_id.bus.capacity
-    #     num_reservations = 50
-    #
-    #     # check initial `last_reserved_seat` value
-    #     self.assertEqual(trip_id.last_reserved_seat, 0)
-    #
-    #     for i in range(num_reservations):
-    #         reserve_seat(trip_id)
-    #         trip_id.refresh_from_db()
-    #
-    #     # check new `last_reserved_seat` value
-    #     self.assertEqual(trip_id.last_reserved_seat, bus_capacity)
-    #
-    # def test_has_available_seats_free(self):
-    #     """
-    #     check if has_available_seats() returns True if no reservations
-    #     """
-    #     trip_id = Trip.objects.get(pk=1)
-    #
-    #     # check reservation_set size
-    #     self.assertEqual(trip_id.reservation_set.count(), 0)
-    #
-    #     # check using service method
-    #     self.assertTrue(has_available_seats(trip_id))
-    #
-    # def test_has_available_seats_full(self):
-    #     """
-    #     check if reserve_seat({{trip}}) stops reserving at capacity
-    #     """
-    #     trip_id = Trip.objects.get(pk=1)
-    #     bus_capacity = trip_id.bus.capacity
-    #     num_reservations = 50
-    #
-    #     # check initial `last_reserved_seat` value
-    #     self.assertEqual(trip_id.last_reserved_seat, 0)
-    #
-    #     for i in range(num_reservations):
-    #         reserve_seat(trip_id)
-    #         trip_id.refresh_from_db()
-    #
-    #     # check new `last_reserved_seat` value
-    #     self.assertEqual(trip_id.last_reserved_seat, bus_capacity)
+    def test_has_available_seats_free(self):
+        """
+        check if has_available_seats() returns True if no reservations
+        """
+        trip_id = Trip.objects.first()
+        trip_route = trip_id.trip_route
+        trip_stop_a = trip_route.tripstop_set.get(stop_number=1)
+        trip_stop_b = trip_route.tripstop_set.get(stop_number=2)
+
+        # check using service method
+        self.assertTrue(has_available_seats(trip=trip_id, departure_stop=trip_stop_a, arrival_stop=trip_stop_b))
+
+    def test_has_available_seats_full(self):
+        """
+        check if reserve_seat({{trip}}) stops reserving at capacity
+        """
+        trip_id = Trip.objects.first()
+        trip_route = trip_id.trip_route
+        trip_stop_a = trip_route.tripstop_set.get(stop_number=1)
+        trip_stop_b = trip_route.tripstop_set.get(stop_number=2)
+
+        num_reservations = 50
+        bus_capacity = trip_id.bus.capacity
+        customer = Customer.objects.first()
+
+        for i in range(num_reservations):
+            bus_seat = BusSeat.objects.get(bus=trip_id.bus, order=(i % bus_capacity))
+            res = create_reservation(
+                trip=trip_id, bus_seat=bus_seat, customer=customer,
+                departure_station=trip_stop_a.station,
+                arrival_station=trip_stop_b.station,
+            )
+
+        # check new `last_reserved_seat` value
+        reservations_num = get_seats_reserved(
+            trip=trip_id,
+            departure_stop=trip_stop_a,
+            arrival_stop=trip_stop_b,
+        ).count()
+        self.assertEqual(reservations_num, bus_capacity)
 
     def test_has_available_seats_case1(self):
         """
@@ -368,7 +350,7 @@ class TripServicesTests(TestCase):
 
     def test_has_available_seats_case8(self):
         """
-        CASE 7
+        CASE 8
         Trip Route: A - B - C - D - E
         Reservation1: D to E
         Reservation2: A to B
@@ -403,3 +385,39 @@ class TripServicesTests(TestCase):
             arrival_stop=trip_stop_b,
         ).count()
         self.assertEqual(reservations_num, 0)
+
+    def test_has_available_seats_case9(self):
+        """
+        CASE 9
+        Trip Route: A - B
+        Reservation1: A to B
+        Reservation2: A to B
+        ◦--◦
+        ◦--◦
+        when making reservation2 it should say that the free seats = capacity - 1
+        """
+        # [Step1] retrieve required data
+        # [Step1.1] get first trip and get its first 4 stops
+        trip_id = Trip.objects.first()
+        trip_route = trip_id.trip_route
+        trip_stop_a = trip_route.tripstop_set.get(stop_number=1)
+        trip_stop_b = trip_route.tripstop_set.get(stop_number=2)
+
+        # [Step1.2] get any customer and the first seat in the trip's  bus
+        customer = Customer.objects.first()
+        bus_seat = BusSeat.objects.get(bus=trip_id.bus, order=1)
+
+        # [Step2] reserve from A to C
+        create_reservation(
+            trip=trip_id, bus_seat=bus_seat, customer=customer,
+            departure_station=trip_stop_a.station,
+            arrival_station=trip_stop_b.station,
+        )
+
+        # [Step3] there now should be a reservation if you want to reserve from B to D
+        reservations_num = get_seats_reserved(
+            trip=trip_id,
+            departure_stop=trip_stop_a,
+            arrival_stop=trip_stop_b,
+        ).count()
+        self.assertEqual(reservations_num, 1)
