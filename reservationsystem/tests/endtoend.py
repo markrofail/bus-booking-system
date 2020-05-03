@@ -39,6 +39,23 @@ class TripsEndPointTests(TestCase):
         self.assertEqual(trip_name, "Trip Zentry")
 
 
+class TripsDetailEndPointTests(TestCase):
+    fixtures = ['busstations', 'buses', 'triproutes', 'tripstops', 'trips']
+
+    def testQueryTripDetail(self):
+        query_params = dict()
+        query_params['departure_station'] = BusStation.objects.get(name="Asyut").id
+        query_params['arrival_station'] = BusStation.objects.get(name="Banha").id
+
+        trip = Trip.objects.get(name="Trip Zentry")
+
+        response = self.client.get(f'/api/v1/reservationsystem/trips/{trip.id}/', query_params)
+        self.assertEqual(response.status_code, 200)
+
+        response_json = response.json()
+        self.assertEqual(len(response_json), 12)
+
+
 class ReservationEndPointTests(TestCase):
     fixtures = ['customers', 'busstations', 'buses', 'triproutes', 'tripstops', 'trips']
 
