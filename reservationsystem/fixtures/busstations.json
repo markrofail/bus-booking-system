@@ -1,0 +1,296 @@
+[
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 1,
+    "fields": {
+      "name": "Barnis"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 2,
+    "fields": {
+      "name": "Cairo"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 3,
+    "fields": {
+      "name": "Alexandria"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 4,
+    "fields": {
+      "name": "Giza"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 5,
+    "fields": {
+      "name": "Ismailia"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 6,
+    "fields": {
+      "name": "Port Said"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 7,
+    "fields": {
+      "name": "Luxor"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 8,
+    "fields": {
+      "name": "Suhaj"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 9,
+    "fields": {
+      "name": "Al Mansurah"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 10,
+    "fields": {
+      "name": "Suez"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 11,
+    "fields": {
+      "name": "Damanhur"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 12,
+    "fields": {
+      "name": "Al Minya"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 13,
+    "fields": {
+      "name": "Bani Suwayf"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 14,
+    "fields": {
+      "name": "Asyut"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 15,
+    "fields": {
+      "name": "Tanta"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 16,
+    "fields": {
+      "name": "Al Fayyum"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 17,
+    "fields": {
+      "name": "Aswan"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 18,
+    "fields": {
+      "name": "Kawm Umbu"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 19,
+    "fields": {
+      "name": "Qina"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 20,
+    "fields": {
+      "name": "Damietta"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 21,
+    "fields": {
+      "name": "Az Zaqaziq"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 22,
+    "fields": {
+      "name": "Mallawi"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 23,
+    "fields": {
+      "name": "Rosetta"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 24,
+    "fields": {
+      "name": "Shibin al Kawm"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 25,
+    "fields": {
+      "name": "Al `Arish"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 26,
+    "fields": {
+      "name": "Banha"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 27,
+    "fields": {
+      "name": "Al Ghardaqah"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 28,
+    "fields": {
+      "name": "Samalut"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 29,
+    "fields": {
+      "name": "Kafr ash Shaykh"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 30,
+    "fields": {
+      "name": "Jirja"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 31,
+    "fields": {
+      "name": "Marsa Matruh"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 32,
+    "fields": {
+      "name": "Al Kharijah"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 33,
+    "fields": {
+      "name": "At Tur"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 34,
+    "fields": {
+      "name": "Isna"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 35,
+    "fields": {
+      "name": "Bani Mazar"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 36,
+    "fields": {
+      "name": "Safaja"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 37,
+    "fields": {
+      "name": "Siwah"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 38,
+    "fields": {
+      "name": "Ad Dab`ah"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 39,
+    "fields": {
+      "name": "Al `Alamayn"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 40,
+    "fields": {
+      "name": "As Sallum"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 41,
+    "fields": {
+      "name": "Qasr al Farafirah"
+    }
+  },
+  {
+    "model": "reservationsystem.busstation",
+    "pk": 42,
+    "fields": {
+      "name": "Al Qasr"
+    }
+  }
+]

@@ -1,0 +1,302 @@
+[
+  {
+    "model": "reservationsystem.trip",
+    "pk": 1,
+    "fields": {
+      "name": "Trip Isosphere",
+      "bus": 4,
+      "trip_route": 4,
+      "departure_time": "2020-02-19T12:22:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 2,
+    "fields": {
+      "name": "Trip Isonus",
+      "bus": 4,
+      "trip_route": 7,
+      "departure_time": "2020-03-20T02:37:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 3,
+    "fields": {
+      "name": "Trip Dentrex",
+      "bus": 4,
+      "trip_route": 3,
+      "departure_time": "2020-04-06T05:17:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 4,
+    "fields": {
+      "name": "Trip Enersol",
+      "bus": 3,
+      "trip_route": 8,
+      "departure_time": "2020-01-14T15:04:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 5,
+    "fields": {
+      "name": "Trip Overplex",
+      "bus": 4,
+      "trip_route": 6,
+      "departure_time": "2020-03-16T15:02:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 6,
+    "fields": {
+      "name": "Trip Intrawear",
+      "bus": 2,
+      "trip_route": 2,
+      "departure_time": "2020-02-14T21:44:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 7,
+    "fields": {
+      "name": "Trip Xsports",
+      "bus": 2,
+      "trip_route": 6,
+      "departure_time": "2020-03-28T17:42:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 8,
+    "fields": {
+      "name": "Trip Cytrex",
+      "bus": 2,
+      "trip_route": 6,
+      "departure_time": "2020-01-16T16:21:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 9,
+    "fields": {
+      "name": "Trip Gology",
+      "bus": 4,
+      "trip_route": 5,
+      "departure_time": "2020-04-05T11:08:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 10,
+    "fields": {
+      "name": "Trip Zenolux",
+      "bus": 2,
+      "trip_route": 1,
+      "departure_time": "2020-02-16T02:08:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 11,
+    "fields": {
+      "name": "Trip Pigzart",
+      "bus": 3,
+      "trip_route": 7,
+      "departure_time": "2020-02-13T22:47:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 12,
+    "fields": {
+      "name": "Trip Isologics",
+      "bus": 3,
+      "trip_route": 2,
+      "departure_time": "2020-04-22T01:34:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 13,
+    "fields": {
+      "name": "Trip Knowlysis",
+      "bus": 1,
+      "trip_route": 6,
+      "departure_time": "2020-02-19T21:01:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 14,
+    "fields": {
+      "name": "Trip Xanide",
+      "bus": 2,
+      "trip_route": 8,
+      "departure_time": "2020-01-13T13:21:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 15,
+    "fields": {
+      "name": "Trip Inquala",
+      "bus": 2,
+      "trip_route": 5,
+      "departure_time": "2020-03-27T14:04:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 16,
+    "fields": {
+      "name": "Trip Letpro",
+      "bus": 3,
+      "trip_route": 7,
+      "departure_time": "2020-04-20T05:01:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 17,
+    "fields": {
+      "name": "Trip Datagene",
+      "bus": 3,
+      "trip_route": 1,
+      "departure_time": "2020-04-02T00:59:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 18,
+    "fields": {
+      "name": "Trip Realmo",
+      "bus": 3,
+      "trip_route": 1,
+      "departure_time": "2020-04-20T09:12:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 19,
+    "fields": {
+      "name": "Trip Polaria",
+      "bus": 2,
+      "trip_route": 7,
+      "departure_time": "2020-03-04T04:49:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 20,
+    "fields": {
+      "name": "Trip Olympix",
+      "bus": 3,
+      "trip_route": 5,
+      "departure_time": "2020-04-22T04:01:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 21,
+    "fields": {
+      "name": "Trip Opticall",
+      "bus": 2,
+      "trip_route": 7,
+      "departure_time": "2020-02-16T07:13:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 22,
+    "fields": {
+      "name": "Trip Verton",
+      "bus": 4,
+      "trip_route": 5,
+      "departure_time": "2020-01-18T12:48:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 23,
+    "fields": {
+      "name": "Trip Opticom",
+      "bus": 1,
+      "trip_route": 5,
+      "departure_time": "2020-01-02T20:10:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 24,
+    "fields": {
+      "name": "Trip Comtrak",
+      "bus": 2,
+      "trip_route": 5,
+      "departure_time": "2020-02-16T09:30:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 25,
+    "fields": {
+      "name": "Trip Extragen",
+      "bus": 3,
+      "trip_route": 4,
+      "departure_time": "2020-03-05T16:55:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 26,
+    "fields": {
+      "name": "Trip Ginkle",
+      "bus": 1,
+      "trip_route": 6,
+      "departure_time": "2020-01-27T06:50:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 27,
+    "fields": {
+      "name": "Trip Wrapture",
+      "bus": 4,
+      "trip_route": 4,
+      "departure_time": "2020-04-07T09:03:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 28,
+    "fields": {
+      "name": "Trip Otherway",
+      "bus": 2,
+      "trip_route": 2,
+      "departure_time": "2020-01-01T03:10:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 29,
+    "fields": {
+      "name": "Trip Photobin",
+      "bus": 1,
+      "trip_route": 5,
+      "departure_time": "2020-01-07T01:37:00-02:00"
+    }
+  },
+  {
+    "model": "reservationsystem.trip",
+    "pk": 30,
+    "fields": {
+      "name": "Trip Zentry",
+      "bus": 2,
+      "trip_route": 2,
+      "departure_time": "2020-01-18T02:23:00-02:00"
+    }
+  }
+]

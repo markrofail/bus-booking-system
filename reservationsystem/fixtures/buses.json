@@ -1,0 +1,30 @@
+[
+  {
+    "model": "reservationsystem.bus",
+    "pk": 1,
+    "fields": {
+      "name": "Blue Bus"
+    }
+  },
+  {
+    "model": "reservationsystem.bus",
+    "pk": 2,
+    "fields": {
+      "name": "Green Bus"
+    }
+  },
+  {
+    "model": "reservationsystem.bus",
+    "pk": 3,
+    "fields": {
+      "name": "Yellow Bus"
+    }
+  },
+  {
+    "model": "reservationsystem.bus",
+    "pk": 4,
+    "fields": {
+      "name": "Red Bus"
+    }
+  }
+]

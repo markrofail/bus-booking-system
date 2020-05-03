@@ -1,0 +1,70 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$180000$sCfGTVuc6I3t$zmCP+8qOz8DA7SpGMQNlNFCboyRRpEXfb4Ql4Zz9Qvg=",
+            "last_login": "2020-05-02T12:20:59.444Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "admin@example.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2020-05-02T12:20:42.123Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$180000$hRo0NfhRYG56$rI3ydu4RyFHDN8F9ij5Rji7E++EybovXqrknILkyeII=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "alice",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2020-05-02T12:27:18.564Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.customer",
+        "pk": 2,
+        "fields": {
+            "payment_info": "Credit Card"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$180000$LR1FblLpojN9$vQ2jAEYMo4T74nI0PJxdnXD4bSpDQ7yLpnHf9yrxH18=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "bob",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2020-05-02T12:27:41.525Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.customer",
+        "pk": 3,
+        "fields": {
+            "payment_info": "Credit Card"
+        }
+    }
+]

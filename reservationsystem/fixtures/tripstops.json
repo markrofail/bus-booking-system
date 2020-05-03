@@ -1,0 +1,614 @@
+[
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 1,
+    "fields": {
+      "trip_route": 1,
+      "station": 2,
+      "stop_number": 1
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 2,
+    "fields": {
+      "trip_route": 1,
+      "station": 34,
+      "stop_number": 2
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 3,
+    "fields": {
+      "trip_route": 1,
+      "station": 3,
+      "stop_number": 3
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 4,
+    "fields": {
+      "trip_route": 1,
+      "station": 5,
+      "stop_number": 4
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 5,
+    "fields": {
+      "trip_route": 1,
+      "station": 26,
+      "stop_number": 5
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 6,
+    "fields": {
+      "trip_route": 1,
+      "station": 12,
+      "stop_number": 6
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 7,
+    "fields": {
+      "trip_route": 1,
+      "station": 41,
+      "stop_number": 7
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 8,
+    "fields": {
+      "trip_route": 2,
+      "station": 14,
+      "stop_number": 1
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 9,
+    "fields": {
+      "trip_route": 2,
+      "station": 33,
+      "stop_number": 2
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 10,
+    "fields": {
+      "trip_route": 2,
+      "station": 26,
+      "stop_number": 3
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 11,
+    "fields": {
+      "trip_route": 2,
+      "station": 34,
+      "stop_number": 4
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 12,
+    "fields": {
+      "trip_route": 2,
+      "station": 11,
+      "stop_number": 5
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 13,
+    "fields": {
+      "trip_route": 2,
+      "station": 12,
+      "stop_number": 6
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 14,
+    "fields": {
+      "trip_route": 2,
+      "station": 27,
+      "stop_number": 7
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 15,
+    "fields": {
+      "trip_route": 2,
+      "station": 38,
+      "stop_number": 8
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 16,
+    "fields": {
+      "trip_route": 2,
+      "station": 39,
+      "stop_number": 9
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 17,
+    "fields": {
+      "trip_route": 3,
+      "station": 16,
+      "stop_number": 1
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 18,
+    "fields": {
+      "trip_route": 3,
+      "station": 26,
+      "stop_number": 2
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 19,
+    "fields": {
+      "trip_route": 3,
+      "station": 3,
+      "stop_number": 3
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 20,
+    "fields": {
+      "trip_route": 3,
+      "station": 4,
+      "stop_number": 4
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 21,
+    "fields": {
+      "trip_route": 3,
+      "station": 40,
+      "stop_number": 5
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 22,
+    "fields": {
+      "trip_route": 3,
+      "station": 29,
+      "stop_number": 6
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 23,
+    "fields": {
+      "trip_route": 3,
+      "station": 25,
+      "stop_number": 7
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 24,
+    "fields": {
+      "trip_route": 3,
+      "station": 17,
+      "stop_number": 8
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 25,
+    "fields": {
+      "trip_route": 4,
+      "station": 27,
+      "stop_number": 1
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 26,
+    "fields": {
+      "trip_route": 4,
+      "station": 34,
+      "stop_number": 2
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 27,
+    "fields": {
+      "trip_route": 4,
+      "station": 36,
+      "stop_number": 3
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 28,
+    "fields": {
+      "trip_route": 4,
+      "station": 35,
+      "stop_number": 4
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 29,
+    "fields": {
+      "trip_route": 4,
+      "station": 16,
+      "stop_number": 5
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 30,
+    "fields": {
+      "trip_route": 4,
+      "station": 28,
+      "stop_number": 6
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 31,
+    "fields": {
+      "trip_route": 5,
+      "station": 8,
+      "stop_number": 1
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 32,
+    "fields": {
+      "trip_route": 5,
+      "station": 36,
+      "stop_number": 2
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 33,
+    "fields": {
+      "trip_route": 5,
+      "station": 41,
+      "stop_number": 3
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 34,
+    "fields": {
+      "trip_route": 5,
+      "station": 34,
+      "stop_number": 4
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 35,
+    "fields": {
+      "trip_route": 5,
+      "station": 16,
+      "stop_number": 5
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 36,
+    "fields": {
+      "trip_route": 5,
+      "station": 2,
+      "stop_number": 6
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 37,
+    "fields": {
+      "trip_route": 5,
+      "station": 31,
+      "stop_number": 7
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 38,
+    "fields": {
+      "trip_route": 5,
+      "station": 3,
+      "stop_number": 8
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 39,
+    "fields": {
+      "trip_route": 5,
+      "station": 12,
+      "stop_number": 9
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 40,
+    "fields": {
+      "trip_route": 5,
+      "station": 27,
+      "stop_number": 10
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 41,
+    "fields": {
+      "trip_route": 6,
+      "station": 36,
+      "stop_number": 1
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 42,
+    "fields": {
+      "trip_route": 6,
+      "station": 33,
+      "stop_number": 2
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 43,
+    "fields": {
+      "trip_route": 6,
+      "station": 38,
+      "stop_number": 3
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 44,
+    "fields": {
+      "trip_route": 6,
+      "station": 7,
+      "stop_number": 4
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 45,
+    "fields": {
+      "trip_route": 6,
+      "station": 26,
+      "stop_number": 5
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 46,
+    "fields": {
+      "trip_route": 6,
+      "station": 30,
+      "stop_number": 6
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 47,
+    "fields": {
+      "trip_route": 6,
+      "station": 28,
+      "stop_number": 7
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 48,
+    "fields": {
+      "trip_route": 6,
+      "station": 16,
+      "stop_number": 8
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 49,
+    "fields": {
+      "trip_route": 6,
+      "station": 35,
+      "stop_number": 9
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 50,
+    "fields": {
+      "trip_route": 7,
+      "station": 8,
+      "stop_number": 1
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 51,
+    "fields": {
+      "trip_route": 7,
+      "station": 11,
+      "stop_number": 2
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 52,
+    "fields": {
+      "trip_route": 7,
+      "station": 30,
+      "stop_number": 3
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 53,
+    "fields": {
+      "trip_route": 7,
+      "station": 28,
+      "stop_number": 4
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 54,
+    "fields": {
+      "trip_route": 7,
+      "station": 29,
+      "stop_number": 5
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 55,
+    "fields": {
+      "trip_route": 7,
+      "station": 21,
+      "stop_number": 6
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 56,
+    "fields": {
+      "trip_route": 7,
+      "station": 2,
+      "stop_number": 7
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 57,
+    "fields": {
+      "trip_route": 7,
+      "station": 31,
+      "stop_number": 8
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 58,
+    "fields": {
+      "trip_route": 7,
+      "station": 18,
+      "stop_number": 9
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 59,
+    "fields": {
+      "trip_route": 7,
+      "station": 5,
+      "stop_number": 10
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 60,
+    "fields": {
+      "trip_route": 8,
+      "station": 38,
+      "stop_number": 1
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 61,
+    "fields": {
+      "trip_route": 8,
+      "station": 25,
+      "stop_number": 2
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 62,
+    "fields": {
+      "trip_route": 8,
+      "station": 37,
+      "stop_number": 3
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 63,
+    "fields": {
+      "trip_route": 8,
+      "station": 27,
+      "stop_number": 4
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 64,
+    "fields": {
+      "trip_route": 8,
+      "station": 16,
+      "stop_number": 5
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 65,
+    "fields": {
+      "trip_route": 8,
+      "station": 39,
+      "stop_number": 6
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 66,
+    "fields": {
+      "trip_route": 8,
+      "station": 3,
+      "stop_number": 7
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 67,
+    "fields": {
+      "trip_route": 8,
+      "station": 17,
+      "stop_number": 8
+    }
+  },
+  {
+    "model": "reservationsystem.tripstop",
+    "pk": 68,
+    "fields": {
+      "trip_route": 8,
+      "station": 1,
+      "stop_number": 9
+    }
+  }
+]

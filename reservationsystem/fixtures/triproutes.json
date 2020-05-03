@@ -1,0 +1,66 @@
+[
+  {
+    "model": "reservationsystem.triproute",
+    "pk": 1,
+    "fields": {
+      "name": "Trip Route A",
+      "duration": "1:21:50"
+    }
+  },
+  {
+    "model": "reservationsystem.triproute",
+    "pk": 2,
+    "fields": {
+      "name": "Trip Route B",
+      "duration": "2:25:1"
+    }
+  },
+  {
+    "model": "reservationsystem.triproute",
+    "pk": 3,
+    "fields": {
+      "name": "Trip Route C",
+      "duration": "2:40:43"
+    }
+  },
+  {
+    "model": "reservationsystem.triproute",
+    "pk": 4,
+    "fields": {
+      "name": "Trip Route D",
+      "duration": "1:39:36"
+    }
+  },
+  {
+    "model": "reservationsystem.triproute",
+    "pk": 5,
+    "fields": {
+      "name": "Trip Route E",
+      "duration": "0:57:56"
+    }
+  },
+  {
+    "model": "reservationsystem.triproute",
+    "pk": 6,
+    "fields": {
+      "name": "Trip Route F",
+      "duration": "2:40:39"
+    }
+  },
+  {
+    "model": "reservationsystem.triproute",
+    "pk": 7,
+    "fields": {
+      "name": "Trip Route G",
+      "duration": "2:28:58"
+    }
+  },
+  {
+    "model": "reservationsystem.triproute",
+    "pk": 8,
+    "fields": {
+      "name": "Trip Route H",
+      "duration": "1:33:35"
+    }
+  }
+]
