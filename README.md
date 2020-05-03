@@ -117,9 +117,9 @@ There are **6** endpoints implemented
 ![endpoint-gif-stations][endpoint-gif-stations]
 
 - `GET api/v1/reservationsystem/trips`
-  - query params should contain `date_from`, `date_to`, `start_station` and `end_station`
-  - returns all available trips within the mentioned time range going from `start_station` to `end_station`
-  - `start_station` and `end_station` ids should be obtained from `GET /stations`
+  - query params should contain `date_from`, `date_to`, `departure_station` and `arrival_station`
+  - returns all available trips within the mentioned time range going from `departure_station` to `arrival_station`
+  - `departure_station` and `arrival_station` ids should be obtained from `GET /stations`
 ![endpoint-gif-trips][endpoint-gif-trips]
 
 

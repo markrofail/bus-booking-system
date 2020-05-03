@@ -30,10 +30,10 @@ class TripSearchServicesTests(TestCase):
         date_from = pytz.utc.localize(datetime(2020, 1, 17, 0, 0, 0, 0))
         date_to = pytz.utc.localize(datetime(2020, 1, 19, 0, 0, 0, 0))
 
-        start_station = BusStation.objects.get(name="Asyut")
-        end_station = BusStation.objects.get(name="Banha")
+        departure_station = BusStation.objects.get(name="Asyut")
+        arrival_station = BusStation.objects.get(name="Banha")
 
-        trip = get_all_trips(date_from=date_from, date_to=date_to, start_station=start_station, end_station=end_station)
+        trip = get_all_trips(date_from=date_from, date_to=date_to, departure_station=departure_station, arrival_station=arrival_station)
 
         # check using service method
         self.assertEqual(len(trip), 1)

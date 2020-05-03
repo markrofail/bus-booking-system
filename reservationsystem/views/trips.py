@@ -26,11 +26,11 @@ class TripListApi(APIView):
             "incorrect_type": busstop_error_message,
         }
 
-        start_station = serializers.PrimaryKeyRelatedField(
+        departure_station = serializers.PrimaryKeyRelatedField(
             queryset=BusStation.objects.all(),
             error_messages=error_messages
         )
-        end_station = serializers.PrimaryKeyRelatedField(
+        arrival_station = serializers.PrimaryKeyRelatedField(
             queryset=BusStation.objects.all(),
             error_messages=error_messages
         )
@@ -62,8 +62,8 @@ class TripListApi(APIView):
         trips = get_all_trips(
             date_from=query_params['date_from'],
             date_to=query_params['date_to'],
-            start_station=query_params['start_station'],
-            end_station=query_params['end_station'],
+            departure_station=query_params['departure_station'],
+            arrival_station=query_params['arrival_station'],
         )
 
         # [Step3] return results

@@ -27,8 +27,8 @@ class TripsEndPointTests(TestCase):
         query_params['date_from'] = pytz.utc.localize(datetime(2020, 1, 17, 0, 0, 0, 0))
         query_params['date_to'] = pytz.utc.localize(datetime(2020, 1, 19, 0, 0, 0, 0))
 
-        query_params['start_station'] = BusStation.objects.get(name="Asyut").id
-        query_params['end_station'] = BusStation.objects.get(name="Banha").id
+        query_params['departure_station'] = BusStation.objects.get(name="Asyut").id
+        query_params['arrival_station'] = BusStation.objects.get(name="Banha").id
 
         response = self.client.get('/api/v1/reservationsystem/trips', query_params)
         self.assertEqual(response.status_code, 200)

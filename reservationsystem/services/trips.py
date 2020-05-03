@@ -6,21 +6,21 @@ from django.db.models import F, Q
 from reservationsystem.models import Trip, BusStation, TripStop, Reservation, BusSeat
 
 
-def get_all_trips(*, date_from: datetime, date_to: datetime, start_station: BusStation, end_station: BusStation) \
+def get_all_trips(*, date_from: datetime, date_to: datetime, departure_station: BusStation, arrival_station: BusStation) \
         -> Iterable[Trip]:
     """
     [Step1] filter trips with departure time between `date_form` and `date_to`
-    [Step2] filter trips with trip route that contain the `start_station` before the `end_station`
+    [Step2] filter trips with trip route that contain the `departure_station` before the `arrival_station`
     """
     trips = Trip.objects.filter(
         departure_time__gte=date_from,
         departure_time__lte=date_to,
-        trip_route__tripstop__station=start_station,
+        trip_route__tripstop__station=departure_station,
     ).annotate(
         # save 1st trip stop number as `start_station_number`
         start_station_number=F('trip_route__tripstop__stop_number')
     ).filter(
-        trip_route__tripstop__station=end_station,
+        trip_route__tripstop__station=arrival_station,
         # compare 2nd trip stop number with `start_station_number`
         trip_route__tripstop__stop_number__gt=F('start_station_number')
     )
