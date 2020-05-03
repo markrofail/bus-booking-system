@@ -112,7 +112,7 @@ class TripDetailApi(APIView):
     class OutputSerializer(serializers.ModelSerializer):
         class Meta:
             model = BusSeat
-            fields = ['name']
+            fields = ['id', 'name']
 
     def get(self, request, pk, format=None):
         # [Step1] retrieve and validate query params from request
