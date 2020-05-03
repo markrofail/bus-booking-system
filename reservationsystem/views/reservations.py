@@ -2,7 +2,7 @@ from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from reservationsystem.models import Trip, Reservation
+from reservationsystem.models import Trip, BusStation, BusSeat, Reservation
 from reservationsystem.services.reservations import create_reservation
 from users import permissions
 
@@ -15,14 +15,36 @@ class ReservationCreateApi(APIView):
     permission_classes = [permissions.IsCustomer]
 
     class InputSerializer(serializers.Serializer):
-        trip_error_message = "invalid param format 'trip_id'; use GET '/trips' to retreive list of available trips"
-
+        busstop_error_message = "invalid param format 'station_end'; use GET '/stations' to retrieve list of stations"
+        error_messages = {
+            "does_not_exist": busstop_error_message,
+            "incorrect_type": busstop_error_message,
+        }
+        departure_station = serializers.PrimaryKeyRelatedField(
+            queryset=BusStation.objects.all(),
+            error_messages=error_messages
+        )
+        arrival_station = serializers.PrimaryKeyRelatedField(
+            queryset=BusStation.objects.all(),
+            error_messages=error_messages
+        )       
+        
+        trip_error_message = "invalid param format 'trip'; use GET '/trips' to retreive list of available trips"
         trip = serializers.PrimaryKeyRelatedField(
             queryset=Trip.objects.all(),
             error_messages={
                 "does_not_exist": trip_error_message,
                 "incorrect_type": trip_error_message,
             })
+
+        busseat_error_message = "invalid param format 'bus_seat'; use GET '/trips/<pk>' to retreive list of available seats"
+        bus_seat = serializers.PrimaryKeyRelatedField(
+            queryset=BusSeat.objects.all(),
+            error_messages={
+                "does_not_exist": trip_error_message,
+                "incorrect_type": trip_error_message,
+            })
+
 
     class OutputSerializer(serializers.ModelSerializer):
         bus_seat = serializers.SerializerMethodField(read_only=True)

@@ -1,5 +1,6 @@
 <!-- PROJECT SHIELDS -->
 [![Made With Django][django-shield]][django-shield]
+[![Heroku][heroku-url]][heroku-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -21,11 +22,7 @@
     <br />
     To be consumed by a web or mobile frontend
     <br />
-    <a href="https://github.com/markrofail/bus-booking-system">View Demo</a>
-    ·
-    <a href="https://github.com/markrofail/bus-booking-system/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/markrofail/bus-booking-system/issues">Request Feature</a>
+    <a href="https://documenter.getpostman.com/view/3070897/SzmZdfzP">View Documentation</a>
   </p>
 </p>
 
@@ -39,6 +36,7 @@
   - [Endpoints](#endpoints)
   - [Loading Demo Data](#loading-demo-data)
   - [Admin Dashboard](#admin-dashboard)
+  - [Running Tests](#running-tests)
 - [Roadmap](#roadmap)
   - [Software Requirements Specification](#software-requirements-specification)
 - [Contributing](#contributing)
@@ -117,14 +115,20 @@ There are **6** endpoints implemented
 ![endpoint-gif-stations][endpoint-gif-stations]
 
 - `GET api/v1/reservationsystem/trips`
-  - query params should contain `date_from`, `date_to`, `start_station` and `end_station`
-  - returns all available trips within the mentioned time range going from `start_station` to `end_station`
-  - `start_station` and `end_station` ids should be obtained from `GET /stations`
+  - query params should contain `date_from`, `date_to`, `departure_station` and `arrival_station`
+  - returns all available trips within the mentioned time range going from `departure_station` to `arrival_station`
+  - `departure_station` and `arrival_station` ids should be obtained from `GET /stations`
 ![endpoint-gif-trips][endpoint-gif-trips]
 
+- `GET api/v1/reservationsystem/trips/<int:pk>`
+  - query params should contain `departure_station` and `arrival_station`
+  - returns all available bus_seats on desired trip going from `departure_station` to `arrival_station`
+  - `departure_station` and `arrival_station` ids should be obtained from `GET /stations`
+![endpoint-gif-trips-detail][endpoint-gif-trips-detail]
 
 - `POST api/v1/reservationsystem/reservation`
   - request body should contain `trip` corresponding to the desired trip id
+  - request body should also contain `bus_seat`, `departure_station` and `arrival_station`
   - the `trip` id should be obtained from `GET /trips`
 ![endpoint-gif-reservations][endpoint-gif-reservations]
 
@@ -157,6 +161,14 @@ The system is loaded with **30** Trips with **8** different routes, **42** diffe
 
 The Django admin dashboard can be found at `/admin`
 please use the Admin's crentials above to login.
+
+### Running Tests
+
+End-to-end and Unit Tests are implements
+
+```bash
+  docker-compose run backend python manage.py test
+```
 
 ## Roadmap
 
@@ -198,11 +210,6 @@ Trip Relationships
 - To access a BusStation name you need to access `Trip.TripRoute.TripStop.BusStation.name`
 - The Trip does all the work. A single point of responsibility issue.
 
-### Currnet Limitaions
-
-- If a Trip is going from A to B to C and a customer makes a reservation from A to B, the bus seat is not released. If someone tries to book it from B to C it is unavailable. More time needs to go into this.
-
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -240,4 +247,5 @@ Please make sure to update tests as appropriate.
 [endpoint-gif-trips]: doc/assets/images/endpoint-trips-v2-min.gif
 [endpoint-gif-stations]: doc/assets/images/endpoint-stations-v2-min.gif
 [endpoint-gif-reservations]: doc/assets/images/endpoint-reservations-v2-min.gif
+[endpoint-gif-trips-detail]: doc/assets/images/endpoint-trips-detail.gif
 [endpoint-gif-token-refresh]: doc/assets/images/endpoint-token-refresh-v2-min.gif

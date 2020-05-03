@@ -1,8 +1,9 @@
 from datetime import datetime
 
+import pytz
 from django.test import Client, TestCase
 
-from .models import BusStation, Trip
+from reservationsystem.models import BusStation, Trip, BusSeat
 
 
 class StationsEndPointTests(TestCase):
@@ -23,11 +24,11 @@ class TripsEndPointTests(TestCase):
 
     def testQueryTrips(self):
         query_params = dict()
-        query_params['date_from'] = datetime(2020, 1, 17, 0, 0, 0, 0)
-        query_params['date_to'] = datetime(2020, 1, 19, 0, 0, 0, 0)
+        query_params['date_from'] = pytz.utc.localize(datetime(2020, 1, 17, 0, 0, 0, 0))
+        query_params['date_to'] = pytz.utc.localize(datetime(2020, 1, 19, 0, 0, 0, 0))
 
-        query_params['start_station'] = BusStation.objects.get(name="Asyut").id
-        query_params['end_station'] = BusStation.objects.get(name="Banha").id
+        query_params['departure_station'] = BusStation.objects.get(name="Asyut").id
+        query_params['arrival_station'] = BusStation.objects.get(name="Banha").id
 
         response = self.client.get('/api/v1/reservationsystem/trips', query_params)
         self.assertEqual(response.status_code, 200)
@@ -39,15 +40,37 @@ class TripsEndPointTests(TestCase):
         self.assertEqual(trip_name, "Trip Zentry")
 
 
+class TripsDetailEndPointTests(TestCase):
+    fixtures = ['busstations', 'buses', 'triproutes', 'tripstops', 'trips']
+
+    def testQueryTripDetail(self):
+        query_params = dict()
+        query_params['departure_station'] = BusStation.objects.get(name="Asyut").id
+        query_params['arrival_station'] = BusStation.objects.get(name="Banha").id
+
+        trip = Trip.objects.get(name="Trip Zentry")
+
+        response = self.client.get(f'/api/v1/reservationsystem/trips/{trip.id}/', query_params)
+        self.assertEqual(response.status_code, 200)
+
+        response_json = response.json()
+        self.assertEqual(len(response_json), 12)
+
+
 class ReservationEndPointTests(TestCase):
     fixtures = ['customers', 'busstations', 'buses', 'triproutes', 'tripstops', 'trips']
 
     def testPostReservation(self):
         token = login_as_bob()
-        trip_id = Trip.objects.get(name="Trip Zentry").id
+        trip = Trip.objects.get(name="Trip Zentry")
+
+        request_body = dict()
+        request_body['trip'] = trip.id
+        request_body['bus_seat'] = BusSeat.objects.get(bus=trip.bus, order=0).id
+        request_body['departure_station'] = BusStation.objects.get(name="Asyut").id
+        request_body['arrival_station'] = BusStation.objects.get(name="Banha").id
 
         request_headers = {'HTTP_AUTHORIZATION': f'Bearer {token}'}
-        request_body = {"trip": trip_id}
         response = self.client.post('/api/v1/reservationsystem/reservations', request_body, **request_headers)
         self.assertEqual(response.status_code, 200)
 
