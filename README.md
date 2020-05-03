@@ -22,11 +22,7 @@
     <br />
     To be consumed by a web or mobile frontend
     <br />
-    <a href="https://github.com/markrofail/bus-booking-system">View Demo</a>
-    ·
-    <a href="https://github.com/markrofail/bus-booking-system/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/markrofail/bus-booking-system/issues">Request Feature</a>
+    <a href="https://documenter.getpostman.com/view/3070897/SzmZdfzP">View Documentation</a>
   </p>
 </p>
 
