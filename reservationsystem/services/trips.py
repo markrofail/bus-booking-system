@@ -1,9 +1,9 @@
 from datetime import datetime
 from typing import Iterable
 
-from django.db.models import F
+from django.db.models import F, Q
 
-from reservationsystem.models import Trip, BusStation, BusSeat
+from reservationsystem.models import Trip, BusStation, TripStop, Reservation
 
 
 def get_all_trips(*, date_from: datetime, date_to: datetime, start_station: BusStation,
@@ -17,7 +17,7 @@ def get_all_trips(*, date_from: datetime, date_to: datetime, start_station: BusS
         departure_time__gte=date_from,
         departure_time__lte=date_to,
         trip_route__tripstop__station=start_station,
-        bus__capacity__gt = F('last_reserved_seat')
+        bus__capacity__gt=F('last_reserved_seat')
     ).annotate(
         # save 1st trip stop number as `start_station_number`
         start_station_number=F('trip_route__tripstop__stop_number')
@@ -29,24 +29,30 @@ def get_all_trips(*, date_from: datetime, date_to: datetime, start_station: BusS
     return trips
 
 
-def has_available_seats(trip: Trip) -> bool:
+def has_available_seats(*, trip: Trip, departure_stop: TripStop, arrival_stop: TripStop) -> bool:
     """
-    compares the trip's bus capacity with the last reserved seat number
+    checks if there is an available seat in Trip `trip` starting `departure_stop` and ending `arrival_stop`
     """
-    return trip.last_reserved_seat < trip.bus.capacity
+    reservation = get_seats_reserved(trip=trip, departure_stop=departure_stop, arrival_stop=arrival_stop)
+    return reservation.count() < trip.bus.capacity
 
 
-def reserve_seat(trip: Trip) -> BusSeat:
+def get_seats_reserved(*, trip: Trip, departure_stop: TripStop, arrival_stop: TripStop) -> Iterable[Reservation]:
     """
-    reserves a seat by incrementing `last_reserved_seat` and returning corresponding bus seat
+    get reservations where
+        the departure_stop is between the query arrival_stop and departure_stop
+        the arrival_stop is between the query arrival_stop and departure_stop
+        the query arrival_stop and departure_stop is between the departure_stop and the arrival_stop
     """
-    if has_available_seats(trip):
-        # [Step1] get bus_seat
-        bus_seat = BusSeat.objects.get(bus=trip.bus, order__exact=trip.last_reserved_seat)
-
-        # [Step2] increment tip's `last_reserved_seat`
-        trip.last_reserved_seat = F('last_reserved_seat') + 1
-        trip.save()
-
-        # [Step3] return bus_seat
-        return bus_seat
+    reservations = Reservation.objects.filter(trip=trip).filter(
+        # [case1] the departure_stop is between the query arrival_stop and departure_stop
+        (Q(arrival_stop__stop_number__gt=departure_stop.stop_number)
+         & Q(arrival_stop__stop_number__lt=arrival_stop.stop_number)) |
+        # [case2]  the arrival_stop is between the query arrival_stop and departure_stop
+        (Q(departure_stop__stop_number__gt=departure_stop.stop_number)
+         & Q(departure_stop__stop_number__lt=arrival_stop.stop_number)) |
+        # [case3] the query arrival_stop and departure_stop is between the departure_stop and arrival_stop
+        (Q(departure_stop__stop_number__lt=departure_stop.stop_number)
+         & Q(arrival_stop__stop_number__gt=arrival_stop.stop_number))
+    )
+    return reservations
