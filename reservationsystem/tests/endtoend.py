@@ -61,10 +61,15 @@ class ReservationEndPointTests(TestCase):
 
     def testPostReservation(self):
         token = login_as_bob()
-        trip_id = Trip.objects.get(name="Trip Zentry").id
+        trip = Trip.objects.get(name="Trip Zentry")
+
+        request_body = dict()
+        request_body['trip'] = trip.id
+        request_body['bus_seat'] = BusSeat.objects.get(bus=trip.bus, order=0).id
+        request_body['departure_station'] = BusStation.objects.get(name="Asyut").id
+        request_body['arrival_station'] = BusStation.objects.get(name="Banha").id
 
         request_headers = {'HTTP_AUTHORIZATION': f'Bearer {token}'}
-        request_body = {"trip": trip_id}
         response = self.client.post('/api/v1/reservationsystem/reservations', request_body, **request_headers)
         self.assertEqual(response.status_code, 200)
 
