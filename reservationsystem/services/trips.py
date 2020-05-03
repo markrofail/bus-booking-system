@@ -65,15 +65,12 @@ def get_seats_reserved(*, trip: Trip, departure_stop: TripStop, arrival_stop: Tr
     reservations = Reservation.objects.filter(trip=trip).filter(
         # [case1] the departure_stop is between the query arrival_stop and departure_stop
         (Q(arrival_stop__stop_number__gt=departure_stop.stop_number)
-         & Q(arrival_stop__stop_number__lt=arrival_stop.stop_number)) |
+         & Q(arrival_stop__stop_number__lte=arrival_stop.stop_number)) |
         # [case2]  the arrival_stop is between the query arrival_stop and departure_stop
-        (Q(departure_stop__stop_number__gt=departure_stop.stop_number)
+        (Q(departure_stop__stop_number__gte=departure_stop.stop_number)
          & Q(departure_stop__stop_number__lt=arrival_stop.stop_number)) |
         # [case3] the query arrival_stop and departure_stop is between the departure_stop and arrival_stop
         (Q(departure_stop__stop_number__lt=departure_stop.stop_number)
-         & Q(arrival_stop__stop_number__gt=arrival_stop.stop_number)) |
-        # [case4] both exactly equal
-        (Q(departure_stop__stop_number=departure_stop.stop_number)
-         & Q(arrival_stop__stop_number=arrival_stop.stop_number))
+         & Q(arrival_stop__stop_number__gt=arrival_stop.stop_number))
     )
     return reservations
