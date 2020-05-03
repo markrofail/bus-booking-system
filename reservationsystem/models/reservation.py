@@ -10,4 +10,4 @@ class Reservation(models.Model):
     arrival_stop = models.ForeignKey('reservationsystem.tripstop', on_delete=models.DO_NOTHING, related_name='reservation_end')
 
     def __str__(self):
-        return f"{self.trip} by: {self.customer} [departure:{self.departure_station}] [arrival:{self.arrival_station}]"
+        return f"{self.trip}:{self.bus_seat} by: {self.customer} [departure:{self.departure_stop}] [arrival:{self.arrival_stop}]"
