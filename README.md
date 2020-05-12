@@ -92,7 +92,15 @@ There are **6** endpoints implemented
 
 - `GET /`
   - returns `{"healthCheck": "ok"}` to ensure system is up
-![endpoint-gif-index][endpoint-gif-index]
+
+    <details>
+      <summary>screenshot</summary>
+      <p>
+
+      ![endpoint-gif-index][endpoint-gif-index]
+
+      </p>
+    </details>
 
 #### Token Endpoints
 
@@ -101,36 +109,84 @@ There are **6** endpoints implemented
 - `POST api/v1/token/`
   - request body should contain `username` and `password` fields
   - returns json with `access` token and `refresh` token
-![endpoint-gif-token][endpoint-gif-token]
+
+    <details>
+      <summary>screenshot</summary>
+      <p>
+
+      ![endpoint-gif-token][endpoint-gif-token]
+
+      </p>
+    </details>
 
 - `POST api/v1/token/refresh`
   - request body should contain `refresh` token
   - returns json with refreshed `access` token
-![endpoint-gif-token-refresh][endpoint-gif-token-refresh]
+
+    <details>
+      <summary>screenshot</summary>
+      <p>
+
+      ![endpoint-gif-token-refresh][endpoint-gif-token-refresh]
+
+      </p>
+    </details>
 
 #### ReservationSystem Endpoints
 
 - `GET api/v1/reservationsystem/stations`
   - returns all stations in the database
-![endpoint-gif-stations][endpoint-gif-stations]
+
+    <details>
+      <summary>screenshot</summary>
+      <p>
+
+      ![endpoint-gif-stations][endpoint-gif-stations]
+
+      </p>
+    </details>
 
 - `GET api/v1/reservationsystem/trips`
   - query params should contain `date_from`, `date_to`, `departure_station` and `arrival_station`
   - returns all available trips within the mentioned time range going from `departure_station` to `arrival_station`
   - `departure_station` and `arrival_station` ids should be obtained from `GET /stations`
-![endpoint-gif-trips][endpoint-gif-trips]
+
+    <details>
+      <summary>screenshot</summary>
+      <p>
+
+      ![endpoint-gif-trips][endpoint-gif-trips]
+
+      </p>
+    </details>
 
 - `GET api/v1/reservationsystem/trips/<int:pk>`
   - query params should contain `departure_station` and `arrival_station`
   - returns all available bus_seats on desired trip going from `departure_station` to `arrival_station`
   - `departure_station` and `arrival_station` ids should be obtained from `GET /stations`
-![endpoint-gif-trips-detail][endpoint-gif-trips-detail]
+
+    <details>
+      <summary>screenshot</summary>
+      <p>
+
+      ![endpoint-gif-trips-detail][endpoint-gif-trips-detail]
+
+      </p>
+    </details>
 
 - `POST api/v1/reservationsystem/reservation`
   - request body should contain `trip` corresponding to the desired trip id
   - request body should also contain `bus_seat`, `departure_station` and `arrival_station`
   - the `trip` id should be obtained from `GET /trips`
-![endpoint-gif-reservations][endpoint-gif-reservations]
+
+    <details>
+      <summary>screenshot</summary>
+      <p>
+
+      ![endpoint-gif-reservations][endpoint-gif-reservations]
+
+      </p>
+    </details>
 
 ### Loading Demo Data
 
