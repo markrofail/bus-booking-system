@@ -1,5 +1,5 @@
 python-dotenv==0.13.0
-Django==3.0.7
+Django==3.0.14
 psycopg2-binary==2.8.5
 djangorestframework==3.11.0
 djangorestframework-simplejwt==4.4.0
